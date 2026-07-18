@@ -52,62 +52,29 @@
     a:focus{outline:3px solid rgba(96,165,250,0.25);outline-offset:3px;border-radius:8px}
 
     /* Skip link */
-    .skip-link{
-      position:absolute;left:8px;top:8px;background:#fff;color:#000;padding:8px 12px;border-radius:6px;
-      transform:translateY(-120%);transition:transform .18s ease-in-out;font-weight:600;z-index:1000
-    }
+    .skip-link{position:absolute;left:8px;top:8px;background:#fff;color:#000;padding:8px 12px;border-radius:6px;transform:translateY(-120%);transition:transform .18s ease-in-out;font-weight:600;z-index:1000}
     .skip-link:focus{transform:translateY(0%)}
 
     .wrap{max-width:var(--max-width);margin:0 auto;padding:28px}
 
     /* HERO */
-    .hero{
-      padding:64px 20px;
-      text-align:center;
-      border-radius:18px;
-      background:linear-gradient(135deg,#071033 0%, #0f172a 35%, #1e3a8a 65%, var(--accent) 100%);
-      box-shadow:0 12px 40px rgba(2,6,23,0.6);
-      margin:18px 0;
-    }
-    .hero h1{
-      font-size:clamp(1.9rem, 4vw, 3.2rem);
-      margin-bottom:10px;
-      letter-spacing:-0.02em;
-    }
-    .hero p{
-      max-width:850px;margin:0 auto;font-size:clamp(.95rem, 2vw, 1.15rem);opacity:.95;color:rgba(255,255,255,0.95)
-    }
+    .hero{padding:64px 20px;text-align:center;border-radius:18px;background:linear-gradient(135deg,#071033 0%, #0f172a 35%, #1e3a8a 65%, var(--accent) 100%);box-shadow:0 12px 40px rgba(2,6,23,0.6);margin:18px 0}
+    .hero h1{font-size:clamp(1.9rem, 4vw, 3.2rem);margin-bottom:10px;letter-spacing:-0.02em}
+    .hero p{max-width:850px;margin:0 auto;font-size:clamp(.95rem, 2vw, 1.15rem);opacity:.95;color:rgba(255,255,255,0.95)}
 
     .hero .actions{margin-top:18px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-    .btn{
-      display:inline-flex;align-items:center;gap:.6rem;padding:12px 20px;border-radius:999px;
-      background:var(--accent);color:white;font-weight:700;border:0;cursor:pointer;
-      transition:transform .12s ease, background .12s ease;
-      text-decoration:none;
-    }
+    .btn{display:inline-flex;align-items:center;gap:.6rem;padding:12px 20px;border-radius:999px;background:var(--accent);color:white;font-weight:700;border:0;cursor:pointer;transition:transform .12s ease, background .12s ease;text-decoration:none}
     .btn.secondary{background:transparent;border:1px solid rgba(255,255,255,0.08);color:var(--text)}
     .btn:focus{box-shadow:0 6px 18px rgba(37,99,235,0.18)}
     .btn:hover{transform:translateY(-3px);background:#3b82f6}
 
     /* Cards */
-    .grid{
-      display:grid;
-      gap:26px;
-      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-      margin-top:28px;
-    }
-    .card{
-      background:linear-gradient(180deg,var(--card-2), rgba(17,24,39,0.85));
-      padding:28px;border-radius:var(--radius);box-shadow:0 12px 30px rgba(2,6,23,0.6);
-    }
+    .grid{display:grid;gap:26px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));margin-top:28px}
+    .card{background:linear-gradient(180deg,var(--card-2), rgba(17,24,39,0.85));padding:28px;border-radius:var(--radius);box-shadow:0 12px 30px rgba(2,6,23,0.6)}
     h2{color:var(--accent-2);margin-bottom:12px;font-size:1.15rem}
     p{color:var(--muted);font-size:0.98rem}
 
-    .project{
-      background:linear-gradient(180deg, rgba(255,255,255,0.02), var(--glass));
-      padding:18px;border-radius:12px;transition:transform .16s ease, box-shadow .16s ease;
-      border:1px solid rgba(255,255,255,0.03)
-    }
+    .project{background:linear-gradient(180deg, rgba(255,255,255,0.02), var(--glass));padding:18px;border-radius:12px;transition:transform .16s ease, box-shadow .16s ease;border:1px solid rgba(255,255,255,0.03)}
     .project:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(2,6,23,0.6)}
     .project h3{margin-bottom:8px;color:#93c5fd;font-size:1.05rem}
     .project p{color:var(--muted);font-size:.95rem}
@@ -115,36 +82,28 @@
     .tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
     .tag{background:var(--accent);padding:6px 12px;border-radius:999px;font-size:.82rem;color:white}
 
-    footer{
-      text-align:center;padding:30px 10px;margin-top:26px;color:var(--muted);font-size:.95rem
-    }
+    footer{text-align:center;padding:30px 10px;margin-top:26px;color:var(--muted);font-size:.95rem}
 
     /* Utilities */
     .muted{color:var(--muted)}
     .link-small{font-size:.95rem;color:var(--accent-2)}
 
-    /* Reduced motion */
-    @media (prefers-reduced-motion: reduce){
-      .project,.btn{transition:none}
-    }
-
-    /* Responsive adjustments */
-    @media (max-width:520px){
-      .hero{padding:42px 16px}
-      .wrap{padding:12px}
-    }
+    /* Responsive */
+    @media (prefers-reduced-motion: reduce){.project,.btn{transition:none}}@media (max-width:520px){.hero{padding:42px 16px}.wrap{padding:12px}}
 
     /* Contact form */
-    .form-row{display:flex;flex-direction:column;gap:8px}
-    .form-input, .form-textarea{padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);color:var(--text)}
-    .form-textarea{min-height:110px;resize:vertical}
-    .form-note{font-size:0.9rem;color:var(--muted);margin-top:8px}
+    .form-row{display:flex;flex-direction:column;gap:8px}.form-input,.form-textarea{padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);color:var(--text)}.form-textarea{min-height:110px;resize:vertical}.form-note{font-size:0.9rem;color:var(--muted);margin-top:8px}
 
     /* Joke generator */
     .joke{font-size:1rem;padding:12px;border-radius:8px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);min-height:56px}
 
-    /* small link */
-    .alt-link{font-size:0.85rem;color:var(--muted);margin-left:8px}
+    /* Project embed */
+    .project-media{display:flex;gap:12px;align-items:flex-start}
+    .thumb{width:220px;height:140px;border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,0.04)}
+    .embed-wrap{flex:1;min-width:220px}
+    .embed-iframe{width:100%;height:320px;border:0;border-radius:10px}
+    .embed-fallback{padding:12px;background:rgba(255,255,255,0.02);border-radius:8px}
+
   </style>
 </head>
 <body>
@@ -177,11 +136,7 @@
     <section style="margin-top:22px" aria-labelledby="about-title">
       <div class="card" role="region" aria-labelledby="about-title">
         <h2 id="about-title">About Me</h2>
-        <p>
-          I'm a customer-focused professional with nearly 30 years of hospitality leadership experience transitioning into Customer Success.
-          I use AI every day to improve communication, streamline workflows, solve business problems, create marketing content, build websites, research new technologies, and continually expand my knowledge.
-        </p>
-        <p style="margin-top:12px"><strong>My philosophy:</strong> Technology should remove repetitive work so people can spend more time building relationships and creating exceptional customer experiences.</p>
+        <p>I'm a customer-focused professional with nearly 30 years of hospitality leadership experience transitioning into Customer Success. I use AI every day to improve communication, streamline workflows, solve business problems, create marketing content, build websites, research new technologies, and continually expand my knowledge.</p>
       </div>
     </section>
 
@@ -199,20 +154,29 @@
               <span class="tag">Branding</span>
               <span class="tag">Marketing</span>
             </div>
-            <p style="margin-top:12px">
-              <a class="link-small" id="intentional-primary" href="https://intentionalinkdesigns.com" target="_blank" rel="noopener noreferrer">Visit Project →</a>
-              <a class="alt-link" id="intentional-alt" href="https://www.intentionalinkdesigns.com" target="_blank" rel="noopener noreferrer">(alternate: www)</a>
-            </p>
+            <p style="margin-top:12px"><a class="link-small" href="https://intentionalinkdesigns.com" target="_blank" rel="noopener noreferrer">Visit Project →</a></p>
           </article>
 
           <article class="project" role="listitem" aria-labelledby="p2-title">
             <h3 id="p2-title">Tattoo Preview AR</h3>
             <p>An augmented-reality tattoo preview web app built on Replit that lets users preview tattoo designs on their skin using the device camera.</p>
-            <div class="tags" aria-hidden="true">
-              <span class="tag">AR</span>
-              <span class="tag">Replit</span>
-              <span class="tag">Web App</span>
+
+            <div class="project-media" style="margin-top:12px">
+              <div class="thumb" aria-hidden="true">
+                <img src="/tattoo-preview-thumb.svg" alt="Tattoo Preview AR thumbnail" style="width:100%;height:100%;object-fit:cover;display:block">
+              </div>
+
+              <div class="embed-wrap">
+                <div id="tattoo-embed-area" class="embed-fallback">
+                  <p style="margin:0 0 8px 0;color:var(--muted)">Preview (attempting to embed the Replit app). If the embed is blocked, use the external link.</p>
+                  <div style="display:flex;gap:8px;align-items:center">
+                    <button id="embed-try" class="btn secondary" type="button">Try embed</button>
+                    <a class="btn" id="embed-open" href="https://tattoo-preview-ar.replit.app" target="_blank" rel="noopener noreferrer">Open on Replit</a>
+                  </div>
+                </div>
+              </div>
             </div>
+
             <p style="margin-top:12px"><a class="link-small" href="https://tattoo-preview-ar.replit.app" target="_blank" rel="noopener noreferrer">Open Tattoo Preview AR →</a></p>
           </article>
 
@@ -284,31 +248,16 @@
       <div class="card" role="region" aria-labelledby="connect-title">
         <h2 id="connect-title">Connect</h2>
 
-        <p class="muted">
-          LinkedIn<br>
-          <a href="https://www.linkedin.com/in/sharonknowledge" target="_blank" rel="noopener noreferrer">https://www.linkedin.com/in/sharonknowledge</a>
-        </p>
+        <p class="muted">LinkedIn<br><a href="https://www.linkedin.com/in/sharonknowledge" target="_blank" rel="noopener noreferrer">https://www.linkedin.com/in/sharonknowledge</a></p>
 
-        <p class="muted" style="margin-top:12px">
-          Intentional Ink<br>
-          <a id="intentional-connect" href="https://intentionalinkdesigns.com" target="_blank" rel="noopener noreferrer">https://intentionalinkdesigns.com</a>
-          <a class="alt-link" id="intentional-connect-alt" href="https://www.intentionalinkdesigns.com" target="_blank" rel="noopener noreferrer">(alternate: www)</a>
-        </p>
+        <p class="muted" style="margin-top:12px">Intentional Ink<br><a id="intentional-connect" href="https://intentionalinkdesigns.com" target="_blank" rel="noopener noreferrer">https://intentionalinkdesigns.com</a><a class="alt-link" id="intentional-connect-alt" href="https://www.intentionalinkdesigns.com" target="_blank" rel="noopener noreferrer">(alternate: www)</a></p>
 
-        <p class="muted" style="margin-top:12px">
-          Email<br>
-          <a href="mailto:connectintentionally@gmail.com">connectintentionally@gmail.com</a>
-        </p>
+        <p class="muted" style="margin-top:12px">Email<br><a href="mailto:connectintentionally@gmail.com">connectintentionally@gmail.com</a></p>
 
         <hr style="margin:18px 0;border:0;border-top:1px solid rgba(255,255,255,0.04)">
 
         <h3 style="color:var(--accent-2);margin-bottom:10px">Send a message</h3>
 
-        <!--
-          Contact form: By default this posts to Formspree. To enable, replace `YOUR_FORMSPREE_ENDPOINT`
-          with the action URL Formspree gives you after creating a form (https://formspree.io/).
-          If you don't want to use Formspree, you can remove the form and rely on the mailto link above.
-        -->
         <form class="form-row" action="https://formspree.io/f/xwvwqypy" method="POST" aria-label="Contact form">
           <input type="hidden" name="_next" value="https://sharonmyknowledge.github.io/ai-portfolio/thank-you.html">
           <label class="muted" for="name">Your name</label>
@@ -329,10 +278,7 @@
   </main>
 
   <footer role="contentinfo" class="wrap">
-    <div style="max-width:var(--max-width);margin:0 auto">
-      Designed by Sharon Mathis with AI collaboration.<br><br>
-      Curious. Customer-focused. Always learning.
-    </div>
+    <div style="max-width:var(--max-width);margin:0 auto">Designed by Sharon Mathis with AI collaboration.<br><br>Curious. Customer-focused. Always learning.</div>
   </footer>
 
   <script>
@@ -346,7 +292,6 @@
         out.textContent = 'Loading…';
         copyBtn.style.display = 'none';
         try{
-          // Primary API
           const res = await fetch('https://official-joke-api.appspot.com/random_joke');
           if(!res.ok) throw new Error('Primary API failed');
           const data = await res.json();
@@ -355,7 +300,6 @@
           copyBtn.style.display = 'inline-block';
           return;
         }catch(e){
-          // Fallback: icanhazdadjoke (requires Accept header)
           try{
             const res2 = await fetch('https://icanhazdadjoke.com/', {headers:{'Accept':'application/json'}});
             if(!res2.ok) throw new Error('Fallback API failed');
@@ -380,13 +324,53 @@
           copyBtn.textContent = 'Copied!';
           setTimeout(()=>copyBtn.textContent = 'Copy',2000);
         }catch(e){
-          // Fallback: select and prompt
           const ta = document.createElement('textarea');
           ta.value = text; document.body.appendChild(ta); ta.select();
           try{ document.execCommand('copy'); copyBtn.textContent = 'Copied!'; setTimeout(()=>copyBtn.textContent = 'Copy',2000); }catch(err){ alert('Copy failed — select and copy manually.'); }
           document.body.removeChild(ta);
         }
       });
+
+      // Tattoo Preview AR embed logic
+      (function(){
+        const btn = document.getElementById('embed-try');
+        const area = document.getElementById('tattoo-embed-area');
+        const url = 'https://tattoo-preview-ar.replit.app';
+
+        btn.addEventListener('click', ()=>{
+          // Remove previous content
+          area.innerHTML = '';
+
+          const info = document.createElement('p');
+          info.style.margin = '0 0 8px 0';
+          info.style.color = 'var(--muted)';
+          info.textContent = 'Attempting to embed the Replit app — if embedding is blocked by the site, a link will remain.';
+          area.appendChild(info);
+
+          const iframe = document.createElement('iframe');
+          iframe.className = 'embed-iframe';
+          iframe.src = url;
+          iframe.sandbox = 'allow-same-origin allow-scripts allow-forms allow-popups';
+
+          // Add a loading indicator
+          const loader = document.createElement('div'); loader.textContent = 'Loading embed…'; loader.style.marginTop='8px'; loader.style.color='var(--muted)'; area.appendChild(loader);
+
+          let loaded = false;
+          const timeout = setTimeout(()=>{
+            if(!loaded){
+              area.removeChild(iframe);
+              loader.textContent = 'Embed blocked or timed out — you can open the app in a new tab.';
+              const link = document.createElement('a'); link.href = url; link.target = '_blank'; link.rel = 'noopener noreferrer'; link.className='btn'; link.textContent = 'Open on Replit'; link.style.marginLeft='8px'; area.appendChild(link);
+            }
+          },3000);
+
+          iframe.onload = ()=>{
+            loaded = true; clearTimeout(timeout); loader.textContent = 'Embed loaded — interact with the app below.'; area.appendChild(iframe);
+          };
+
+          area.appendChild(iframe);
+        });
+      })();
 
       // Intentional Ink link fallback helper: try primary then alt using Image ping
       (function(){
@@ -395,29 +379,10 @@
         const anchors = [document.getElementById('intentional-primary'), document.getElementById('intentional-connect')];
         const altAnchors = [document.getElementById('intentional-alt'), document.getElementById('intentional-connect-alt')];
 
-        function setHref(href){
-          anchors.forEach(a=>{ if(a) a.href = href });
-          altAnchors.forEach(a=>{ if(a) a.style.display = (href===primary)?'inline-block':'none' });
-        }
+        function setHref(href){anchors.forEach(a=>{ if(a) a.href = href }); altAnchors.forEach(a=>{ if(a) a.style.display = (href===primary)?'inline-block':'none' });}
+        function ping(url){return new Promise((resolve)=>{const img=new Image();img.onload=()=>resolve(true);img.onerror=()=>resolve(false);img.src=url.replace(/\/$/,'')+'/favicon.ico?cb='+Date.now();setTimeout(()=>resolve(false),2500);});}
+        ping(primary).then(ok=>{ if(ok){ setHref(primary); return; } ping(alt).then(ok2=>{ setHref(ok2?alt:primary); }); });
 
-        // Ping using Image to avoid CORS; some servers block but many will load favicon or root.
-        function ping(url){
-          return new Promise((resolve)=>{
-            const img = new Image();
-            img.onload = ()=>resolve(true);
-            img.onerror = ()=>resolve(false);
-            // Add a cache-buster
-            img.src = url.replace(/\/$/, '') + '/favicon.ico?cb=' + Date.now();
-            // Timeout fallback
-            setTimeout(()=>resolve(false),2500);
-          });
-        }
-
-        // Try primary first
-        ping(primary).then(ok=>{
-          if(ok){ setHref(primary); return; }
-          ping(alt).then(ok2=>{ setHref(ok2?alt:primary); });
-        });
       })();
 
     })();

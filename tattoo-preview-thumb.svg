@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1">
+      <stop offset="0" stop-color="#0f172a" />
+      <stop offset="1" stop-color="#2563eb" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#g)" />
+  <g transform="translate(72,120)">
+    <rect width="360" height="240" rx="14" fill="#071033" opacity="0.6" />
+    <text x="16" y="56" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="700">Tattoo Preview AR</text>
+    <text x="16" y="104" fill="#e6eefc" font-family="Inter, Arial, sans-serif" font-size="20">AR web app · Replit · Camera preview</text>
+    <text x="16" y="160" fill="#cde6ff" font-family="Inter, Arial, sans-serif" font-size="16">Try the live prototype:</text>
+    <a href="https://tattoo-preview-ar.replit.app" target="_blank">
+      <rect x="16" y="176" width="220" height="40" rx="8" fill="#60a5fa" />
+      <text x="126" y="204" fill="#07203a" font-family="Inter, Arial" font-size="16" font-weight="700" text-anchor="middle">Open on Replit</text>
+    </a>
+  </g>
+</svg>
