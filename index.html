@@ -142,6 +142,9 @@
 
     /* Joke generator */
     .joke{font-size:1rem;padding:12px;border-radius:8px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);min-height:56px}
+
+    /* small link */
+    .alt-link{font-size:0.85rem;color:var(--muted);margin-left:8px}
   </style>
 </head>
 <body>
@@ -196,7 +199,10 @@
               <span class="tag">Branding</span>
               <span class="tag">Marketing</span>
             </div>
-            <p style="margin-top:12px"><a class="link-small" href="https://intentionalinkdesigns.com" target="_blank" rel="noopener noreferrer">Visit Project →</a></p>
+            <p style="margin-top:12px">
+              <a class="link-small" id="intentional-primary" href="https://intentionalinkdesigns.com" target="_blank" rel="noopener noreferrer">Visit Project →</a>
+              <a class="alt-link" id="intentional-alt" href="https://www.intentionalinkdesigns.com" target="_blank" rel="noopener noreferrer">(alternate: www)</a>
+            </p>
           </article>
 
           <article class="project" role="listitem" aria-labelledby="p2-title">
@@ -274,7 +280,8 @@
 
         <p class="muted" style="margin-top:12px">
           Intentional Ink<br>
-          <a href="https://intentionalinkdesigns.com" target="_blank" rel="noopener noreferrer">https://intentionalinkdesigns.com</a>
+          <a id="intentional-connect" href="https://intentionalinkdesigns.com" target="_blank" rel="noopener noreferrer">https://intentionalinkdesigns.com</a>
+          <a class="alt-link" id="intentional-connect-alt" href="https://www.intentionalinkdesigns.com" target="_blank" rel="noopener noreferrer">(alternate: www)</a>
         </p>
 
         <p class="muted" style="margin-top:12px">
@@ -292,6 +299,7 @@
           If you don't want to use Formspree, you can remove the form and rely on the mailto link above.
         -->
         <form class="form-row" action="https://formspree.io/f/xwvwqypy" method="POST" aria-label="Contact form">
+          <input type="hidden" name="_next" value="https://sharonmyknowledge.github.io/ai-portfolio/thank-you.html">
           <label class="muted" for="name">Your name</label>
           <input class="form-input" id="name" name="name" type="text" placeholder="Jane Doe" required>
 
@@ -369,8 +377,38 @@
         }
       });
 
-      // Optionally fetch one on load
-      // fetchJoke();
+      // Intentional Ink link fallback helper: try primary then alt using Image ping
+      (function(){
+        const primary = 'https://intentionalinkdesigns.com';
+        const alt = 'https://www.intentionalinkdesigns.com';
+        const anchors = [document.getElementById('intentional-primary'), document.getElementById('intentional-connect')];
+        const altAnchors = [document.getElementById('intentional-alt'), document.getElementById('intentional-connect-alt')];
+
+        function setHref(href){
+          anchors.forEach(a=>{ if(a) a.href = href });
+          altAnchors.forEach(a=>{ if(a) a.style.display = (href===primary)?'inline-block':'none' });
+        }
+
+        // Ping using Image to avoid CORS; some servers block but many will load favicon or root.
+        function ping(url){
+          return new Promise((resolve)=>{
+            const img = new Image();
+            img.onload = ()=>resolve(true);
+            img.onerror = ()=>resolve(false);
+            // Add a cache-buster
+            img.src = url.replace(/\/$/, '') + '/favicon.ico?cb=' + Date.now();
+            // Timeout fallback
+            setTimeout(()=>resolve(false),2500);
+          });
+        }
+
+        // Try primary first
+        ping(primary).then(ok=>{
+          if(ok){ setHref(primary); return; }
+          ping(alt).then(ok2=>{ setHref(ok2?alt:primary); });
+        });
+      })();
+
     })();
   </script>
 </body>

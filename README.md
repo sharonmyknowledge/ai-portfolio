@@ -8,20 +8,24 @@ https://sharonmyknowledge.github.io/ai-portfolio
 
 What's included
 
-- index.html — the full site, now with social meta tags, a contact form (Formspree placeholder), and Open Graph/Twitter meta tags.
+- index.html — the full site, now with social meta tags, a contact form (Formspree enabled), a thank-you page, and a random joke generator.
 - favicon.svg — simple SVG favicon used by the site.
-- social-preview.svg — social preview image used by Open Graph/Twitter. Some platforms prefer PNG; if you want a PNG I can add one.
+- social-preview.svg — social preview image used by Open Graph/Twitter.
+- thank-you.html — a simple thank-you page used by the contact form redirect.
 
 Contact form notes
 
-- The form in index.html uses Formspree. To enable it, sign up at https://formspree.io/ and copy your form endpoint (looks like https://formspree.io/f/abcde) then replace the action attribute in the form with that URL.
-- If you prefer not to use Formspree, you can remove the <form> block and rely on the mailto link.
+- The form posts to Formspree (https://formspree.io/f/xwvwqypy) and redirects to thank-you.html after submit.
+- To change the redirect, edit the hidden _next input in index.html.
 
 Publishing
 
 1. Enable GitHub Pages in repository Settings → Pages → Source: `main` branch, folder `/`.
 2. Wait a minute for the site to deploy. GitHub Pages will show the deployment status and the URL.
 
-Custom domain (optional)
+Verification steps I can perform after Pages is enabled
 
-- If you want a custom domain (example.com), tell me the domain and I will add a CNAME file and instructions for DNS configuration.
+- Check the live URL and confirm Pages is serving the files.
+- Test the joke generator and contact form end-to-end (I will submit a test message to Formspree and confirm delivery).
+
+If you'd like, I can also add PNG/ICO favicons and a PNG social-preview image — tell me if you want me to add those files now.
