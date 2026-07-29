@@ -3,8 +3,8 @@
 // - Nav toggle (accessible)
 // - Smooth scrolling + ScrollSpy
 // - Page fade-in
-// - Particles background (adaptive, performant)
-// - Waveform behind hero (lightweight)
+// - Particles background (motion-forward, adaptive)
+// - Waveform behind hero (enhanced amplitude)
 
 const SELECTORS = {
   navToggle: '#nav-toggle',
@@ -86,7 +86,7 @@ function initUI(){
   new ScrollSpy(SELECTORS.navLinks, SELECTORS.sections);
 }
 
-// ---------------- Particles ----------------
+// ---------------- Particles (motion-forward) ----------------
 class Particles {
   constructor(canvasSelector){
     this.canvas = document.querySelector(canvasSelector);
@@ -114,19 +114,21 @@ class Particles {
   onResize(){
     this.dpr = Math.min(window.devicePixelRatio || 1, 2);
     this.resize();
+    this.createParticles();
   }
   createParticles(){
-    const area = this.canvas.width * this.canvas.height / (this.dpr * 1000);
-    const count = Math.max(14, Math.round(area)); // adaptive
+    const area = (this.canvas.width/this.dpr) * (this.canvas.height/this.dpr) / 1000;
+    // motion-forward: increase density but remain adaptive
+    const count = Math.max(28, Math.round(area * 1.4));
     this.particles = [];
     for (let i=0;i<count;i++){
       this.particles.push({
         x: Math.random()*this.canvas.width/this.dpr,
         y: Math.random()*this.canvas.height/this.dpr,
-        r: Math.random()*1.6 + 0.6,
-        vx: (Math.random()-0.5)*0.2,
-        vy: (Math.random()-0.5)*0.2,
-        alpha: 0.08 + Math.random()*0.16
+        r: Math.random()*2.0 + 0.8,
+        vx: (Math.random()-0.5)*0.6, // faster
+        vy: (Math.random()-0.5)*0.6,
+        alpha: 0.12 + Math.random()*0.16
       });
     }
   }
@@ -134,10 +136,15 @@ class Particles {
     const ctx = this.ctx;
     ctx.clearRect(0,0,this.canvas.width/this.dpr,this.canvas.height/this.dpr);
     for (const p of this.particles){
+      ctx.save();
       ctx.beginPath();
       ctx.fillStyle = `rgba(212,175,55,${p.alpha})`;
+      // subtle halo for motion-forward premium glow
+      ctx.shadowBlur = Math.min(18, p.r * 6);
+      ctx.shadowColor = 'rgba(212,175,55,0.12)';
       ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
       ctx.fill();
+      ctx.restore();
     }
   }
   step(){
@@ -146,10 +153,11 @@ class Particles {
     for (const p of this.particles){
       p.x += p.vx;
       p.y += p.vy;
-      if (p.x < -10) p.x = w + 10;
-      if (p.x > w + 10) p.x = -10;
-      if (p.y < -10) p.y = h + 10;
-      if (p.y > h + 10) p.y = -10;
+      // wrap-around with slight variance
+      if (p.x < -20) p.x = w + 20;
+      if (p.x > w + 20) p.x = -20;
+      if (p.y < -20) p.y = h + 20;
+      if (p.y > h + 20) p.y = -20;
     }
   }
   animate(){
@@ -160,7 +168,7 @@ class Particles {
   stop(){ if (this.raf) cancelAnimationFrame(this.raf); }
 }
 
-// ---------------- Waveform ----------------
+// ---------------- Waveform (enhanced motion) ----------------
 class Waveform {
   constructor(canvasSelector){
     this.canvas = document.querySelector(canvasSelector);
@@ -190,26 +198,26 @@ class Waveform {
     const w = this.width;
     const h = this.height;
     ctx.clearRect(0,0,w,h);
-    this.time += 0.02;
+    this.time += 0.035; // slightly faster
     ctx.globalCompositeOperation = 'lighter';
     ctx.lineWidth = 2;
-    // two layered sine waves
+    // two layered sine waves with increased amplitude
     for (let layer=0; layer<2; layer++){
       ctx.beginPath();
-      const amp = (layer===0? 18 : 8);
-      const freq = (layer===0? 0.9 : 1.6);
-      const phase = this.time * (layer===0? 0.9 : -1.2);
-      for (let x=0;x<w;x+=4){
+      const amp = (layer===0? 28 : 12); // larger amplitude for motion-forward
+      const freq = (layer===0? 0.95 : 1.6);
+      const phase = this.time * (layer===0? 1.05 : -1.3);
+      for (let x=0;x<w;x+=3){
         const norm = x / w;
-        const y = h*0.5 + Math.sin(norm * Math.PI * 2 * freq + phase) * amp * Math.sin(this.time*0.3 + norm*Math.PI);
+        const y = h*0.5 + Math.sin(norm * Math.PI * 2 * freq + phase) * amp * Math.sin(this.time*0.35 + norm*Math.PI);
         if (x === 0) ctx.moveTo(x,y);
         else ctx.lineTo(x,y);
       }
       // gradient stroke
       const grad = ctx.createLinearGradient(0,0,w,0);
-      grad.addColorStop(0, 'rgba(212,175,55,0.06)');
-      grad.addColorStop(0.5, 'rgba(255,255,255,0.02)');
-      grad.addColorStop(1, 'rgba(212,175,55,0.06)');
+      grad.addColorStop(0, 'rgba(212,175,55,0.12)');
+      grad.addColorStop(0.5, 'rgba(255,255,255,0.04)');
+      grad.addColorStop(1, 'rgba(212,175,55,0.12)');
       ctx.strokeStyle = grad;
       ctx.stroke();
     }
@@ -222,20 +230,18 @@ class Waveform {
 // ---------------- Boot ----------------
 document.addEventListener('DOMContentLoaded', ()=>{
   initUI();
-  // small delay for better perceived performance
+  // small delay for perceived performance
   setTimeout(()=>{
-    // Create visual effects if not reduced motion and screen big enough
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!reduced && window.innerWidth > 560){
+    // motion-forward: allow effects on slightly smaller viewports but still avoid tiny phones
+    if (!reduced && window.innerWidth > 420){
       try{
         new Particles(SELECTORS.particlesCanvas);
         new Waveform(SELECTORS.waveformCanvas);
       }catch(e){
-        // fail gracefully if canvas not supported
         console.warn('Visual effects unavailable', e);
       }
     }
-  }, 250);
-  // Fade-in body (remove preload)
+  }, 200);
   requestAnimationFrame(()=> document.body.classList.remove('preload'));
 });
