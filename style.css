@@ -1,0 +1,260 @@
+/* ---------- GLOBAL ---------- */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:'Montserrat',sans-serif;
+
+    background:#050505;
+
+    color:white;
+
+    line-height:1.7;
+
+}
+
+/* ---------- HERO ---------- */
+
+.hero{
+
+    height:100vh;
+
+    background:linear-gradient(
+        rgba(0,0,0,.80),
+        rgba(0,0,0,.90)
+    );
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    padding:40px;
+
+}
+
+.hero-content{
+
+    max-width:900px;
+
+}
+
+.hero h1{
+
+    font-size:4rem;
+
+    color:#d4af37;
+
+    letter-spacing:4px;
+
+    margin-bottom:20px;
+
+}
+
+.hero h2{
+
+    font-weight:300;
+
+    margin-bottom:20px;
+
+}
+
+.hero p{
+
+    max-width:700px;
+
+    margin:auto;
+
+    color:#d8d8d8;
+
+    margin-bottom:40px;
+
+}
+
+.button{
+
+    background:#d4af37;
+
+    color:black;
+
+    text-decoration:none;
+
+    padding:15px 35px;
+
+    border-radius:40px;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+}
+
+.button:hover{
+
+    background:white;
+
+}
+
+/* ---------- NAV ---------- */
+
+nav{
+
+    position:sticky;
+
+    top:0;
+
+    background:#111;
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:40px;
+
+    padding:20px;
+
+    z-index:1000;
+
+}
+
+nav a{
+
+    color:white;
+
+    text-decoration:none;
+
+    transition:.3s;
+
+}
+
+nav a:hover{
+
+    color:#d4af37;
+
+}
+
+/* ---------- SECTIONS ---------- */
+
+section{
+
+    max-width:1100px;
+
+    margin:auto;
+
+    padding:90px 30px;
+
+}
+
+section h2{
+
+    color:#d4af37;
+
+    margin-bottom:30px;
+
+    font-size:2.2rem;
+
+}
+
+/* ---------- CARDS ---------- */
+
+.cards{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+    gap:30px;
+
+}
+
+.card{
+
+    background:#111;
+
+    border:1px solid #333;
+
+    border-radius:18px;
+
+    padding:30px;
+
+    transition:.3s;
+
+}
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+    border-color:#d4af37;
+
+    box-shadow:0 0 25px rgba(212,175,55,.25);
+
+}
+
+.card h3{
+
+    color:#d4af37;
+
+    margin-bottom:15px;
+
+}
+
+/* ---------- LINKS ---------- */
+
+a{
+
+    color:#d4af37;
+
+}
+
+/* ---------- FOOTER ---------- */
+
+footer{
+
+    text-align:center;
+
+    padding:50px;
+
+    color:#777;
+
+    border-top:1px solid #222;
+
+}
+
+/* ---------- MOBILE ---------- */
+
+@media(max-width:768px){
+
+.hero h1{
+
+    font-size:2.5rem;
+
+}
+
+.hero h2{
+
+    font-size:1.2rem;
+
+}
+
+nav{
+
+    flex-wrap:wrap;
+
+    gap:15px;
+
+}
+
+}
